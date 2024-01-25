@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <title>Realidad aumentada</title>
+    <!-- <link rel="stylesheet" type="text/css" href="/style-pc.css"/>  -->
+  </head>
+  <body>
+    <div class="container">
+      <h1>Realidad aumentada</h1>  
+      <!-- <img src="https://cdn.glitch.com/490e8b4f-2193-48cd-923a-77f0e99dfb46%2Flogo_latecoere.png?v=1574486040640" width="200"> -->
+      <h2>Inicio escaneo:</h2>     
+     
+      <br>
+      <div class="botoes">
+        <button onclick="initScan()">Iniciar</button>
+
+        <button onclick="downloadMarker()">Descargar marcador PDF</button>
+
+      </div>
+      
+    </div>    
+    
+    <script>
+      function initScan() {
+        window.location.href="../pages/application.html";
+      }
+      
+      function downloadMarker() {
+        window.open('../Markers/camimpeg/camminpeg_marker.pdf', '_blank');
+        // window.location.href="https://github.com/wesleyvs/RealidadeAumentada/raw/master/Markers/Markers.pdf";
+      } 
+    </script>
+  </body>
+</html>

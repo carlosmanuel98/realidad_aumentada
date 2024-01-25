@@ -1,0 +1,114 @@
+<html> 
+    <script src="https://aframe.io/releases/0.9.2/aframe.min.js"></script> 
+    <script src="https://raw.githack.com/jeromeetienne/AR.js/1.7.5/aframe/build/aframe-ar.js"></script> 
+    <!-- <script src="../library/aframe.min.js"></script> 
+    <script src="../library/aframe-ar.js"></script>  -->
+    <body id="corpo" style="margin : 0px; overflow: hidden;"> 
+        <a-scene arjs="debugUIEnabled: false;">
+            <a-assets>
+               
+                <!--Modelo 3d logo-->
+                <!-- <a-asset-item id="logo" src="../Markers/camimpeg/logo_caming.glb"></a-asset-item>  -->
+              
+                <!--Modelo 3d avatar-->
+                <a-asset-item id="camimpeg" src="../Markers/camimpeg/mesh.glb"></a-asset-item>
+
+                <!-- Modelo 3d Seguros -->
+                <a-asset-item id="cammingpeg_aniversario" src="../Markers/camimpeg/aniversario.glb"></a-asset-item> 
+
+                <!-- Modelo 3d Seguros -->
+                <a-asset-item id="seguros" src="../Markers/seguros/piramide.glb"></a-asset-item>
+
+
+            </a-assets>
+
+            <!--Marker del logo patt-->
+            <!-- <a-marker id="markerLogo" preset="pattern" type="pattern" url="../Models/camimpeg/pattern-logo.patt">
+                <a-entity id="modelLogo" gltf-model="#logo" scale="0.5 0.5 0.5" rotation="200 0 0" position="0 0 0"></a-entity> 
+            </a-marker> -->
+            
+       
+            <!--Marker de camimpeg patt-->
+            <a-marker id="markerCamimpeg" preset="pattern" type="pattern" url="../Models/camimpeg/pattern-camimpeg.patt">
+                <a-entity id="modelCamimpeg" gltf-model="#camimpeg" scale="1.5 1.5 1.5" rotation="5 -45 5"></a-entity> <!-- #### -->
+            </a-marker>
+
+            <!--Marker de camimpeg patt-->
+            <a-marker id="markerAniversario" preset="pattern" type="pattern" url="../Models/camimpeg/pattern-logo.patt">
+              <a-entity id="modelAniversario" gltf-model="#cammingpeg_aniversario" scale="6" rotation="-50 0 5"></a-entity> 
+            </a-marker>
+
+            <!--Marker de camimpeg patt-->
+            <a-marker id="markerSeguros" preset="pattern" type="pattern" url="../Models/seguros/pattern-piramide.patt">
+                <a-entity id="modelSeguros" gltf-model="#seguros" scale="0.01 0.01 0.01" rotation="20 0 0"></a-entity> 
+            </a-marker>
+
+   
+  
+            <a-entity camera></a-entity>
+            
+        </a-scene> 
+      
+      <!-- <script src="script.js"></script> -->
+      <script>
+        // ROTACION cammingpeg
+        AFRAME.registerComponent('rotate-once', {
+            init: function () {
+                var rotationSpeed = 0.5; // Ajusta la velocidad de rotación según tus preferencias
+                var el = this.el;
+
+                el.sceneEl.addEventListener('loaded', function () {
+                    // Hacer que el objeto rote 360 grados en el eje y una vez
+                    el.setAttribute('animation', {
+                        property: 'rotation',
+                        to: '5 360 5',
+                        dur: 10000 / rotationSpeed, // La duración depende de la velocidad de rotación
+                        easing: 'linear',
+                        loop: true
+                    });
+                });
+            }
+        });
+
+        // Aplicar el componente 'rotate-once' al objeto que deseas girar
+        document.getElementById('modelCamimpeg').setAttribute('rotate-once', '');
+
+        
+    </script>
+        <!-- <script>
+            // AFRAME.registerComponent('rotate-once', {
+            //     init: function () {
+            //         var rotationSpeed = 0.5; // Ajusta la velocidad de rotación según tus preferencias
+            //         var el = this.el;
+
+            //         // Hacer que el objeto rote 360 grados en el eje y una vez
+            //         el.setAttribute('loaded', {
+            //             property: 'rotation',
+            //             to: '5 360 5',
+            //             dur: 10000 / rotationSpeed, // La duración depende de la velocidad de rotación
+            //             easing: 'linear',
+            //             loop: true
+            //         });
+            //     }
+            // });
+            let markerAniversario = document.getElementById('markerAniversario');
+            markerAniversario.addEventListener('markerFound', function () {
+                console.log("FOUND markerAniversario");
+            });
+
+            // Escuchar eventos de detección de marcadores
+            let markerCamimpeg = document.getElementById('markerCamimpeg');
+            markerCamimpeg.addEventListener('markerFound', function () {
+                console.log("FOUND");
+            });
+
+            markerCamimpeg.addEventListener('markerLost', function () {
+                console.log("LOST");
+            });
+
+          
+        </script> -->
+    </body> 
+</html>
+
+
